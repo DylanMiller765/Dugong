@@ -9,7 +9,7 @@ function Header() {
         <h1 className="title">Flight Scanner</h1>
       </div>
       <div className="bottomContainer">
-        <p className="subtitle">Find the cheapest Flight</p>
+        <p className="subtitle">Find the cheapest flight</p>
         <div className="searchBox">
           <input type="text" placeholder="Search for flights..." className="searchInput" />
           <button className="searchButton">Search</button>
