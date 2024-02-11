@@ -1,21 +1,17 @@
-// Header.js
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios'; // Import axios
 import './Header.css'; // Import the CSS file
 
 function Header() {
-  // Define a ref for the input element
-  const searchInputRef = useRef(null);
+  // Define state to hold the input value
+  const [userMessage, setUserMessage] = useState('');
 
   // Define a function to handle search button click
   const handleSearchClick = async () => {
-    // Access the current value of the input element using the ref
-    const searchTerm = searchInputRef.current.value;
-
     try {
-      // Send a POST request to the /chat endpoint with the search term
+      // Send a POST request to the /chat endpoint with the user input message
       const response = await axios.post('http://localhost:8080/chat', {
-        message: searchTerm
+        message: userMessage
       }, {
         headers: {
           'Content-Type': 'application/json'
@@ -30,6 +26,11 @@ function Header() {
     }
   };
 
+  // Define a function to update the user message state when the input changes
+  const handleInputChange = (event) => {
+    setUserMessage(event.target.value);
+  };
+
   return (
     <header className="header">
       <div className="topContainer">
@@ -38,10 +39,11 @@ function Header() {
       <div className="bottomContainer">
         <p className="subtitle">Find the cheapest flight</p>
         <div className="searchBox">
-          {/* Attach the ref to the input */}
+          {/* Attach the onChange event listener to update userMessage */}
           <input
-            ref={searchInputRef}
             type="text"
+            value={userMessage}
+            onChange={handleInputChange}
             placeholder="Search for flights..."
             className="searchInput"
           />
