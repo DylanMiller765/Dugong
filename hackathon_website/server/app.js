@@ -8,7 +8,7 @@ app.use(express.json()); // To parse JSON bodies
 const PORT = process.env.PORT || 8080;
 
 // Initialize OpenAI with your API key
-const openai = new OpenAI({ apiKey: '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' });
+const openai = new OpenAI({ apiKey: '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' });
 
 // Add CORS headers
 app.use((req, res, next) => {
@@ -40,7 +40,7 @@ app.post("/chat", async (req, res) => {
         // console.log(modifiedLink);
 
         // Assuming token needs to be changed every hour
-        const headers = { 'Authorization': 'Bearer ' + 'joGHC0tbOY3mqrSZSR8ybkkVe7oy' };
+        const headers = { 'Authorization': 'Bearer ' + '0AEUariKGGB5P3g2snHRmbG02A0O' };
 
         fetch(modifiedLink, {
             method: 'GET',

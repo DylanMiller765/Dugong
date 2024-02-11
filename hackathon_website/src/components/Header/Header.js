@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios'; // Import axios
 import './Header.css'; // Import the CSS file
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+
 
 function Header() {
   // Define state to hold the input value
@@ -20,7 +23,6 @@ function Header() {
 
       // Log the response from the server
       console.log('Response from server:', response.data);
-
     } catch (error) {
       // Handle any errors that occur during the request
       console.error('Error sending search term to server:', error);
@@ -38,19 +40,19 @@ function Header() {
         <h1 className="title">Flight Scanner</h1>
       </div>
       <div className="bottomContainer">
-        <p className="subtitle">Find the cheapest flight</p>
+        <p className="subtitle">Where to...?</p>
         <div className="searchBox">
           {/* Attach the onChange event listener to update userMessage */}
           <input
             type="text"
             value={userMessage}
             onChange={handleInputChange}
-            placeholder="Search for flights..."
+            placeholder="Find Destination... e.g. Miami to Houston, on February 12th"
             className="searchInput"
           />
           {/* Attach the onClick event listener to the search button */}
           <button onClick={handleSearchClick} className="searchButton">
-            Search
+            Find
           </button>
         </div>
       </div>
