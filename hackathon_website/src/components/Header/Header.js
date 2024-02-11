@@ -1,4 +1,6 @@
+// Header.js
 import React, { useRef } from 'react';
+import axios from 'axios'; // Import axios
 import './Header.css'; // Import the CSS file
 
 function Header() {
@@ -6,11 +8,26 @@ function Header() {
   const searchInputRef = useRef(null);
 
   // Define a function to handle search button click
-  const handleSearchClick = () => {
+  const handleSearchClick = async () => {
     // Access the current value of the input element using the ref
     const searchTerm = searchInputRef.current.value;
-    // Perform search logic here
-    console.log('Search term:', searchTerm);
+
+    try {
+      // Send a POST request to the /chat endpoint with the search term
+      const response = await axios.post('http://localhost:8080/chat', {
+        message: searchTerm
+      }, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      // Log the response from the server
+      console.log('Response from server:', response.data);
+    } catch (error) {
+      // Handle any errors that occur during the request
+      console.error('Error sending search term to server:', error);
+    }
   };
 
   return (
