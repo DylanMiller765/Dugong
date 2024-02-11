@@ -21,13 +21,6 @@ function Header() {
       // Log the response from the server
       console.log('Response from server:', response.data);
 
-      // Extract the modified link from the response data
-      const modifiedLink = response.data;
-
-      const header =  {'Authorization': 'Bearer abXsMhwmaFWDF2oW1LmBsXb0adgz'};
-
-      const amadeusResponse = await axios.get(modifiedLink, header);
-
     } catch (error) {
       // Handle any errors that occur during the request
       console.error('Error sending search term to server:', error);
