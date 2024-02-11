@@ -1,5 +1,6 @@
 const express = require("express");
 const { OpenAI } = require('openai');
+const fs = require('fs'); // Import the fs module
 
 const app = express();
 app.use(express.json()); // To parse JSON bodies
@@ -7,7 +8,7 @@ app.use(express.json()); // To parse JSON bodies
 const PORT = process.env.PORT || 8080;
 
 // Initialize OpenAI with your API key
-const openai = new OpenAI({ apiKey: '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' });
+const openai = new OpenAI({ apiKey: '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' });
 
 // Add CORS headers
 app.use((req, res, next) => {
@@ -39,7 +40,7 @@ app.post("/chat", async (req, res) => {
         // console.log(modifiedLink);
 
         // Assuming token needs to be changed every hour
-        const headers = { 'Authorization': 'Bearer ' + '65kX3vMdyZALLfU3fbGBdXW7iakY' };
+        const headers = { 'Authorization': 'Bearer ' + 'joGHC0tbOY3mqrSZSR8ybkkVe7oy' };
 
         fetch(modifiedLink, {
             method: 'GET',
@@ -54,8 +55,38 @@ app.post("/chat", async (req, res) => {
         .then(data => {
             const offers = data.data;
 
-            console.log(modifiedLink);
-            console.log(offers); // Log the fetched data
+            //   // Write the offers data to a JSON file
+            //   const filePath = 'D:/jsonwrite/offers.json';
+            //   fs.writeFile(filePath, JSON.stringify(offers), (err) => {
+            //     if (err) {
+            //         console.error('Error writing JSON file:', err);
+            //     } else {
+            //         console.log('JSON file has been saved!');
+            //     }
+            // });
+
+            const flightData = offers.map(flight => {
+                const departureLocation = flight.itineraries[0].segments[0].departure.iataCode;
+                const arrivalLocation = flight.itineraries[flight.itineraries.length - 1].segments.slice(-1)[0].arrival.iataCode;
+                const airline = flight.itineraries[0].segments[0].carrierCode;
+                const departureTime = flight.itineraries[0].segments[0].departure.at;
+                const arrivalTime = flight.itineraries[flight.itineraries.length - 1].segments.slice(-1)[0].arrival.at;
+                const flightCost = flight.price.total;
+            
+                return {
+                    departureLocation,
+                    arrivalLocation,
+                    airline,
+                    departureTime,
+                    arrivalTime,
+                    flightCost
+                };
+            });
+            
+            console.log(flightData);
+
+            // console.log(modifiedLink);
+            // console.log(offers); // Log the fetched data
         })
         .catch(error => {
             console.error('Error:', error);
