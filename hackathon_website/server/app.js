@@ -7,7 +7,7 @@ app.use(express.json()); // To parse JSON bodies
 const PORT = process.env.PORT || 8080;
 
 // Initialize OpenAI with your API key
-const openai = new OpenAI({ apiKey: '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' });
+const openai = new OpenAI({ apiKey: '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' });
 
 // Add CORS headers
 app.use((req, res, next) => {
@@ -30,6 +30,37 @@ app.post("/chat", async (req, res) => {
                 { role: "user", content: userMessage } // Use the user's message
             ],
             model: "gpt-3.5-turbo",
+        });
+
+
+        // Extract the modified link from the response data
+        const modifiedLink = completion.choices[0].message.content;
+
+        console.log(modifiedLink);
+
+        
+        const fetch = require('node-fetch');
+
+        // Assuming token needs to be changed every hour
+        const headers = { 'Authorization': 'Bearer ' + 'abXsMhwmaFWDF2oW1LmBsXb0adgz' };
+
+        const apiUrl = modifiedLink
+        fetch(apiUrl, {
+            method: 'POST',
+            headers: headers
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const offers = data.data;
+            console.log(offers); // Log the fetched data
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
 
         // Send the response back to the client
