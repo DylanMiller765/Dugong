@@ -4,7 +4,6 @@ import './Header.css'; // Import the CSS file
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-
 function Header() {
   // Define state to hold the input value
   const [userMessage, setUserMessage] = useState('');

@@ -8,7 +8,7 @@ app.use(express.json()); // To parse JSON bodies
 const PORT = process.env.PORT || 8080;
 
 // Initialize OpenAI with your API key
-const openai = new OpenAI({ apiKey: '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' });
+const openai = new OpenAI({ apiKey: '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' });
 
 // Add CORS headers
 app.use((req, res, next) => {
@@ -40,7 +40,7 @@ app.post("/chat", async (req, res) => {
         // console.log(modifiedLink);
 
         // Assuming token needs to be changed every hour
-        const headers = { 'Authorization': 'Bearer ' + '0AEUariKGGB5P3g2snHRmbG02A0O' };
+        const headers = { 'Authorization': 'Bearer ' + 'GLMrlRLkwcThaSLi11GpUtxiV0Jh' };
 
         fetch(modifiedLink, {
             method: 'GET',
@@ -65,22 +65,23 @@ app.post("/chat", async (req, res) => {
             //     }
             // });
 
-            const flightData = offers.map(flight => {
+            const flightData = [];
+            offers.forEach(flight => {
                 const departureLocation = flight.itineraries[0].segments[0].departure.iataCode;
                 const arrivalLocation = flight.itineraries[flight.itineraries.length - 1].segments.slice(-1)[0].arrival.iataCode;
                 const airline = flight.itineraries[0].segments[0].carrierCode;
                 const departureTime = flight.itineraries[0].segments[0].departure.at;
                 const arrivalTime = flight.itineraries[flight.itineraries.length - 1].segments.slice(-1)[0].arrival.at;
                 const flightCost = flight.price.total;
-            
-                return {
+
+                flightData.push({
                     departureLocation,
                     arrivalLocation,
                     airline,
                     departureTime,
                     arrivalTime,
                     flightCost
-                };
+                });
             });
             
             console.log(flightData);
