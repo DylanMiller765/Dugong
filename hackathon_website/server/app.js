@@ -7,7 +7,7 @@ app.use(express.json()); // To parse JSON bodies
 const PORT = process.env.PORT || 8080;
 
 // Initialize OpenAI with your API key
-const openai = new OpenAI({ apiKey: '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' });
+const openai = new OpenAI({ apiKey: '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' });
 
 // Add CORS headers
 app.use((req, res, next) => {
@@ -26,7 +26,7 @@ app.post("/chat", async (req, res) => {
         // Call OpenAI GPT-3 API to generate a response
         const completion = await openai.chat.completions.create({
             messages: [
-                { role: "system", content: "You are a helpful assistant." },
+                { role: "system", content: "change the location code (ISO STANDARD) depending on what cities the user wants to go to and change the date of the link depending on when they want their flight (year is assumed to be 2024 unless specified) (only give me back the modified link with no extra messages before or after): https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=SYD&destinationLocationCode=BKK&departureDate=2024-05-02&adults=1&nonStop=false&max=4" },
                 { role: "user", content: userMessage } // Use the user's message
             ],
             model: "gpt-3.5-turbo",
