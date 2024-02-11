@@ -1,6 +1,6 @@
 const { OpenAI } = require('openai');
 
-const openai = new OpenAI({ apiKey: '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' });
+const openai = new OpenAI({ apiKey: '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' });
 
 async function main() {
   const completion = await openai.chat.completions.create({
