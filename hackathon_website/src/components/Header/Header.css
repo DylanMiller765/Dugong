@@ -1,61 +1,93 @@
 /* HeaderStyles.css */
 
 .header {
-    background: linear-gradient(135deg, #05203C  0%, #0D344A  100%);
-    color: #000000;
-    display: flex;
-    flex-direction: column;
-    padding:  10px;
-  }
-  
-  .topContainer {
-    margin-bottom:  10px;
-  }
-  
-  .title {
-    margin:  0;
-    font-size:  2em;
-    font-weight: bold;
-    color: #ffffff;
-  }
-  
-  .bottomContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height:  100px;
-  }
-  
-  .subtitle {
-    margin-bottom:  12px;
-    font-size:  1.5em;
-    color: #ffffff;
-  }
-  
-  .searchBox {
-    display: flex;
-    align-items: center;
-    gap:  10px;
-  }
-  
-  .searchInput {
-    padding:  8px  12px;
-    width:  300px;
-    border-radius:  20px;
-    border: none;
-    outline: none;
-    background-color: #ffffff;
-    color: #000;
-  }
-  
-  .searchButton {
-    padding:  8px  16px;
-    background-color: #0062E3;
-    border: none;
-    color: white;
-    cursor: pointer;
-    border-radius:  20px;
-    font-weight: bold;
-  }
-  
+  background: #0D344A; /* Strong primary color */
+  color: #FFFFFF; /* Bright white for contrast */
+  display: flex;
+  flex-direction: column;
+  padding:  20px; /* More padding for a modern touch */
+  box-shadow:  0  4px  6px rgba(0,  0,  0,  0.1); /* Subtle shadow for depth */
+  position: relative; /* Allows absolute positioning of child elements */
+}
+
+.topContainer {
+  display: flex; /* Use flex for alignment */
+  justify-content: space-between; /* Space items evenly */
+  align-items: center;
+  margin-bottom: 0px; 
+}
+
+.title {
+  font-family: 'Montserrat', sans-serif; /* Use a custom font for uniqueness */
+  font-size:   2.5em; /* Increase the font size for prominence */
+  font-weight:   700; /* Use a heavier font weight for emphasis */
+  color: #ffffff; /* Bright white text for contrast */
+  text-transform: uppercase; /* Convert to uppercase for a bold look */
+  text-shadow:   1px   1px   3px rgba(0,   0,   0,   0.2); /* Add a shadow for depth */
+  letter-spacing:   0.1em; /* Slight letter spacing for a more stylized appearance */
+  background-clip: text; /* Clip the background to the text shape */
+  -webkit-background-clip: text; /* Compatibility for older browsers */
+  color: transparent; /* Set the text color to transparent */
+  background-image: linear-gradient(to right, #007bff, #34aadc); /* Gradient background behind the text */
+  margin-bottom: 0px;
+}
+
+@keyframes fadeIn {
+   0% { opacity:  0; }
+   100% { opacity:  1; }
+}
+
+.bottomContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding:  0  20px; /* Padding for centering */
+  margin-top:  0px; /* Margin above the search box */
+}
+
+.subtitle {
+  font-size:  1.5em;
+  color: #FFFFFF; /* Bright white text */
+  text-align: center;
+  margin-bottom:  20px; /* More space between subtitle and search box */
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  gap:  10px;
+  background-color: #FFFFFF; /* White background for search box */
+  padding:  8px;
+  border-radius:  20px; /* Rounded corners for search box */
+  box-shadow:  0  4px  6px rgba(0,  0,  0,  0.1); /* Shadow for search box */
+  width:  100%; /* Full width for search box */
+  max-width:  600px; /* Maximum width for search box */
+  margin: auto; /* Auto margins for centered search box */
+}
+
+.searchInput {
+  flex-grow:  1; /* Allow the input to take up remaining space */
+  padding:  8px  12px;
+  border:  1px solid #CCCCCC; /* Subtle border for input field */
+  border-radius:  20px; /* Rounded corners for input field */
+  outline: none; /* No outline */
+  background-color: transparent; /* Transparent background */
+  color: #000; /* Black text color */
+  font-size:  1em; /* Match the font size of the cards */
+}
+
+.searchButton {
+  padding:  8px  16px;
+  background-color: #0062E3;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius:  20px;
+  font-weight: bold;
+  transition: background-color  0.3s ease; /* Smooth transition for hover */
+}
+
+.searchButton:hover {
+  background-color: #004dbf; /* Darken background on hover */
+}

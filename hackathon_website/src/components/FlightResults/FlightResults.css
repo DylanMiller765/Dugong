@@ -1,52 +1,60 @@
 /* FlightResults.css */
 
 .flightResults {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Center cards horizontally */
-    gap:  20px;
-    
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center cards horizontally */
+  gap:  20px;
+}
+
+.flightResultCard {
+  background: #F5F7FA; /* Light gray background */
+  width: calc(33.333% -  20px); /* Width for three columns */
+  padding:  20px;
+  border-radius:  10px;
+  box-shadow:  0  4px  6px rgba(0,  0,  0,  0.1),  0  1px  3px rgba(0,  0,  0,  0.08); /* Enhanced shadow */
+  transition: transform  0.3s ease-out, box-shadow  0.3s ease-out; /* Smooth transition */
+  text-decoration: none;
+}
+
+.flightResultCard:hover {
+  transform: translateY(-5px); /* Subtle lift on hover */
+  box-shadow:  0  10px  20px rgba(0,  0,  0,  0.2),  0  6px  6px rgba(0,  0,  0,  0.24); /* Bigger shadow on hover */
+}
+
+.flightResultTitle {
+  font-size:  1.5em;
+  margin-bottom:  10px;
+  color: #333; /* Dark grey color */
+  font-weight: bold; /* Bold title */
+  letter-spacing:  0.02em; /* Slight letter spacing for readability */
+}
+
+.flightInfo {
+  font-size:  1em;
+  margin:  5px  0;
+  color: #666; /* Light grey color */
+  font-family: 'Roboto', sans-serif; /* Modern sans-serif font */
+  letter-spacing:  0.02em; /* Slight letter spacing for readability */
+}
+
+/* Highlight important information */
+.flightCost,
+.departureTime,
+.arrivalTime {
+  font-weight: bold;
+   /* Brand color for important info */
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width:  768px) {
   .flightResultCard {
-    background: linear-gradient(135deg, #f5f7fa  0%, #c3cfe2  100%); /* Gradient background */
-    width: calc(33.333% -  20px); /* Width for three columns */
-    padding:  20px;
-    border-radius:  10px;
-    box-shadow:  0  4px  6px rgba(0,  0,  0,  0.1),  0  1px  3px rgba(0,  0,  0,  0.08); /* Enhanced shadow */
-    transition: transform  0.3s ease-out, box-shadow  0.3s ease-out; /* Smooth transition */
-    text-decoration: none;
+    width: calc(50% -  20px); /* Two columns on smaller screens */
   }
-  
-  .flightResultCard:hover {
-    transform: translateY(-5px); /* Subtle lift on hover */
-    box-shadow:  0  10px  20px rgba(0,  0,  0,  0.2),  0  6px  6px rgba(0,  0,  0,  0.24); /* Bigger shadow on hover */
+}
+
+@media screen and (max-width:  480px) {
+  .flightResultCard {
+    width:  100%; /* Full width on very small screens */
   }
-  
-  .flightResultTitle {
-    font-size:  1.5em;
-    margin-bottom:  10px;
-    color: #333; /* Dark grey color */
-    font-weight: bold; /* Bold title */
-  }
-  
-  .flightInfo {
-    font-size:  1em;
-    margin:  5px  0;
-    color: #666; /* Light grey color */
-    font-family: 'Roboto', sans-serif; /* Modern sans-serif font */
-  }
-  
-  /* Media queries for responsiveness */
-  @media screen and (max-width:  768px) {
-    .flightResultCard {
-      width: calc(50% -  20px); /* Two columns on smaller screens */
-    }
-  }
-  
-  @media screen and (max-width:  480px) {
-    .flightResultCard {
-      width:  100%; /* Full width on very small screens */
-    }
-  }
-  
+}

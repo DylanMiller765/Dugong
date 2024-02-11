@@ -1,8 +1,18 @@
-// Header.js
-import React from 'react';
-import './Header.css'// Import the CSS file
+import React, { useRef } from 'react';
+import './Header.css'; // Import the CSS file
 
 function Header() {
+  // Define a ref for the input element
+  const searchInputRef = useRef(null);
+
+  // Define a function to handle search button click
+  const handleSearchClick = () => {
+    // Access the current value of the input element using the ref
+    const searchTerm = searchInputRef.current.value;
+    // Perform search logic here
+    console.log('Search term:', searchTerm);
+  };
+
   return (
     <header className="header">
       <div className="topContainer">
@@ -11,8 +21,17 @@ function Header() {
       <div className="bottomContainer">
         <p className="subtitle">Find the cheapest flight</p>
         <div className="searchBox">
-          <input type="text" placeholder="Search for flights..." className="searchInput" />
-          <button className="searchButton">Search</button>
+          {/* Attach the ref to the input */}
+          <input
+            ref={searchInputRef}
+            type="text"
+            placeholder="Search for flights..."
+            className="searchInput"
+          />
+          {/* Attach the onClick event listener to the search button */}
+          <button onClick={handleSearchClick} className="searchButton">
+            Search
+          </button>
         </div>
       </div>
     </header>
