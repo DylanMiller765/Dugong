@@ -8,7 +8,7 @@ app.use(express.json()); // To parse JSON bodies
 const PORT = process.env.PORT || 8080;
 
 // Initialize OpenAI with your API key
-const openai = new OpenAI({ apiKey: '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' });
+const openai = new OpenAI({ apiKey: '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' });
 
 // Add CORS headers
 app.use((req, res, next) => {
@@ -40,7 +40,7 @@ app.post("/chat", async (req, res) => {
         // console.log(modifiedLink);
 
         // Assuming token needs to be changed every hour
-        const headers = { 'Authorization': 'Bearer ' + 'GLMrlRLkwcThaSLi11GpUtxiV0Jh' };
+        const headers = { 'Authorization': 'Bearer ' + 'sBaCHB1GuLJGUNxQ5paOQGvqQVDm' };
 
         fetch(modifiedLink, {
             method: 'GET',
@@ -85,6 +85,7 @@ app.post("/chat", async (req, res) => {
             });
             
             console.log(flightData);
+            module.exports = flightData;
 
             // console.log(modifiedLink);
             // console.log(offers); // Log the fetched data
